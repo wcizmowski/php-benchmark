@@ -16,6 +16,10 @@ abstract class TestBase
 
     public $timeStart;
 
+    /**
+     * TestBase constructor.
+     * @param int $count
+     */
     public function __construct($count = 9999)
     {
         $this->result['version'] = '1.0';
@@ -26,6 +30,10 @@ abstract class TestBase
         $this->count = $count;
     }
 
+    /**
+     * @param $timeStart
+     * @return string
+     */
     public function timer_diff($timeStart): string
     {
         return number_format(microtime(true) - $timeStart, 3);

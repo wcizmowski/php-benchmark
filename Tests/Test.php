@@ -1,11 +1,5 @@
 <?php
 declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: witek
- * Date: 14.08.18
- * Time: 13:34
- */
 
 namespace Tests;
 
@@ -64,9 +58,12 @@ class Test extends TestBase
         $this->result['total'] = $this->timer_diff($this->timeStart);
     }
 
-    public function DisplayResults()
+    /**
+     * Display tests results
+     */
+    public function DisplayResults(): void
     {
-        echo Output::array_to_text($this->result);
+        Output::DisplayResults($this->result);
     }
 
 }

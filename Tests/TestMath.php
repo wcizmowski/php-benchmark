@@ -21,7 +21,7 @@ class TestMath extends TestBase
      * @param $result
      * @param $count
      */
-    public function Test(&$result, $count)
+    public function Test(&$result, $count = 99999)
     {
         $timeStart = microtime(true);
 

@@ -16,7 +16,11 @@ use TestBase\TestBase;
 class TestLoops extends TestBase
 {
 
-    public function Test(&$result, $count)
+    /**
+     * @param $result
+     * @param int $count
+     */
+    public function Test(&$result, $count = 999999)
     {
         $timeStart = microtime(true);
 
