@@ -11,10 +11,12 @@ namespace Tests;
 
 require_once 'TestBase.php';
 require_once 'TestMath.php';
+require_once 'TestLoops.php';
 require_once __DIR__.'/../Output.php';
 
-use TestMath\TestMath;
 use TestBase\TestBase;
+use TestMath\TestMath;
+use TestLoops\TestLoops;
 use Output\Output;
 
 class Test extends TestBase
@@ -22,12 +24,15 @@ class Test extends TestBase
 
     private $testMath;
 
+    private $testLoops;
+
     public function __construct($count = 9999)
     {
         parent::__construct($count);
 
         $this->count = $count;
         $this->testMath = new TestMath();
+        $this->testLoops = new TestLoops();
     }
 
     /**
@@ -46,13 +51,17 @@ class Test extends TestBase
         $this->count = $count;
     }
 
+    /**
+     *  Run all test
+     */
     public function RunTest()
     {
         $this->timeStart = microtime(true);
 
-        $this->testMath->Test($this->result,$this->count);
+        $this->testMath->Test($this->result,100000);
+        $this->testLoops->Test($this->result,1000000);
 
-        $result['total'] = $this->timer_diff($this->timeStart);
+        $this->result['total'] = $this->timer_diff($this->timeStart);
     }
 
     public function DisplayResults()

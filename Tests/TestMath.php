@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Created by PhpStorm.
  * User: witek
@@ -31,6 +33,7 @@ class TestMath extends TestBase
                 $function($i);
             }
         }
+
         $result['benchmark']['math'] = $this->timer_diff($timeStart);
     }
 }

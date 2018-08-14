@@ -8,9 +8,9 @@ declare(strict_types=1);
  * Time: 13:23
  */
 
-require_once __DIR__.'/Tests/Test.php';
+require_once __DIR__ . '/Tests/Test.php';
 
-$test = new \Tests\Test(200000);
+$test = new \Tests\Test();
 
 $test->RunTest();
 $test->DisplayResults();
