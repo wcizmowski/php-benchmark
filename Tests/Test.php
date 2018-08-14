@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: witek
@@ -8,20 +9,31 @@
 
 namespace Tests;
 
-class Test
+require_once 'TestBase.php';
+require_once 'TestMath.php';
+require_once __DIR__.'/../Output.php';
+
+use TestMath\TestMath;
+use TestBase\TestBase;
+use Output\Output;
+
+class Test extends TestBase
 {
 
-    private $count;
+    private $testMath;
 
     public function __construct($count = 9999)
     {
+        parent::__construct($count);
+
         $this->count = $count;
+        $this->testMath = new TestMath();
     }
 
     /**
      * @return int
      */
-    public function getCount()
+    public function getCount(): int
     {
         return $this->count;
     }
@@ -36,11 +48,16 @@ class Test
 
     public function RunTest()
     {
-        //TODO
+        $this->timeStart = microtime(true);
+
+        $this->testMath->Test($this->result,$this->count);
+
+        $result['total'] = $this->timer_diff($this->timeStart);
     }
 
-    public function Results()
+    public function DisplayResults()
     {
-        echo 'test' . PHP_EOL;
+        echo Output::array_to_text($this->result);
     }
+
 }

@@ -6,7 +6,13 @@
  * Time: 13:39
  */
 
-class TestMath
+namespace TestMath;
+
+require_once 'TestBase.php';
+
+use TestBase\TestBase;
+
+class TestMath extends TestBase
 {
 
     /**
@@ -25,6 +31,6 @@ class TestMath
                 $function($i);
             }
         }
-        $result['benchmark']['math'] = timer_diff($timeStart);
+        $result['benchmark']['math'] = $this->timer_diff($timeStart);
     }
 }

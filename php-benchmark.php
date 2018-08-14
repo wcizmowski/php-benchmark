@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 require_once __DIR__.'/Tests/Test.php';
 
-$test = new \Tests\Test();
+$test = new \Tests\Test(200000);
 
-$test->Results();
+$test->RunTest();
+$test->DisplayResults();
