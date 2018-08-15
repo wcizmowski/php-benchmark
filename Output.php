@@ -104,7 +104,7 @@ final class Output
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
-                if (strpos($v,'.')) {
+                if (!\is_array($v) && strpos($v,'.')) {
                     $result .= self::set(self::ArrayToText($v), 'yellow');
                 }
                 else {
