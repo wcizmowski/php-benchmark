@@ -36,7 +36,7 @@ abstract class TestBase
      * @param $timeStart
      * @return string
      */
-    public function timer_diff($timeStart): string
+    public function timer_diff($timeStart)
     {
         return number_format(microtime(true) - $timeStart, 3);
     }

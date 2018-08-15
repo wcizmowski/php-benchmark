@@ -53,10 +53,10 @@ final class Output
     );
 
 
-    public const PARTS = ['benchmark', 'sysifo'];
+    const PARTS = ['benchmark', 'sysinfo'];
 
 
-    public static function set($str, $color): string
+    public static function set($str, $color)
     {
         $color_attrs = explode('+', $color);
         $ansi_str = '';
@@ -68,7 +68,7 @@ final class Output
         return $ansi_str;
     }
 
-    public static function log($message, $color): void
+    public static function log($message, $color)
     {
         /** @noinspection ForgottenDebugOutputInspection */
         error_log(self::set($message, $color));
@@ -80,12 +80,12 @@ final class Output
         $new_text = preg_replace_callback(
             "/($search_regexp)/",
             function ($matches) use ($color) {
-                return Color::set($matches[1], $color);
+                return self::set($matches[1], $color);
             },
             $full_text
         );
 
-        return $new_text ?? $full_text;
+        return $new_text === true ? $new_text : $full_text;
     }
 
     /**
@@ -104,7 +104,12 @@ final class Output
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
-                $result .= self::ArrayToText($v);
+                if (strpos($v,'.')) {
+                    $result .= self::set(self::ArrayToText($v), 'blue');
+                }
+                else {
+                    $result .= self::ArrayToText($v);
+                }
                 $result .= PHP_EOL;
             }
         } else {

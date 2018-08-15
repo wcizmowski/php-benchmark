@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Tests;
 
@@ -40,7 +39,7 @@ class Test extends TestBase
     /**
      * @return int
      */
-    public function getCount(): int
+    public function getCount()
     {
         return $this->count;
     }
@@ -48,7 +47,7 @@ class Test extends TestBase
     /**
      * @param int $count
      */
-    public function setCount($count): void
+    public function setCount($count)
     {
         $this->count = $count;
     }
@@ -56,7 +55,7 @@ class Test extends TestBase
     /**
      *  Run all test
      */
-    public function RunTest(): void
+    public function RunTest()
     {
         $this->timeStart = microtime(true);
 
@@ -71,7 +70,7 @@ class Test extends TestBase
     /**
      * Display tests results
      */
-    public function DisplayResults(): void
+    public function DisplayResults()
     {
         Output::DisplayResults($this->result);
     }
