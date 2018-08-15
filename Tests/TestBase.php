@@ -28,6 +28,8 @@ abstract class TestBase
         $this->result['sysinfo']['platform'] = PHP_OS;
 
         $this->count = $count;
+
+        set_time_limit(120); // seconds
     }
 
     /**
