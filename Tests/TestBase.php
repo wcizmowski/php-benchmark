@@ -22,7 +22,7 @@ abstract class TestBase
      */
     public function __construct($count = 9999)
     {
-        $this->result['version'] = '1.0';
+        $this->result['PHP benchmark version'] = '1.0';
         $this->result['sysinfo']['time'] = date('Y-m-d H:i:s');
         $this->result['sysinfo']['php_version'] = PHP_VERSION;
         $this->result['sysinfo']['platform'] = PHP_OS;
