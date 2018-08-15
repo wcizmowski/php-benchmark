@@ -27,33 +27,33 @@ namespace Output;
 final class Output
 {
     private static $ANSI_CODES = array(
-        'off'        => 0,
-        'bold'       => 1,
-        'italic'     => 3,
-        'underline'  => 4,
-        'blink'      => 5,
-        'inverse'    => 7,
-        'hidden'     => 8,
-        'black'      => 30,
-        'red'        => 31,
-        'green'      => 32,
-        'yellow'     => 33,
-        'blue'       => 34,
-        'magenta'    => 35,
-        'cyan'       => 36,
-        'white'      => 37,
-        'black_bg'   => 40,
-        'red_bg'     => 41,
-        'green_bg'   => 42,
-        'yellow_bg'  => 43,
-        'blue_bg'    => 44,
+        'off' => 0,
+        'bold' => 1,
+        'italic' => 3,
+        'underline' => 4,
+        'blink' => 5,
+        'inverse' => 7,
+        'hidden' => 8,
+        'black' => 30,
+        'red' => 31,
+        'green' => 32,
+        'yellow' => 33,
+        'blue' => 34,
+        'magenta' => 35,
+        'cyan' => 36,
+        'white' => 37,
+        'black_bg' => 40,
+        'red_bg' => 41,
+        'green_bg' => 42,
+        'yellow_bg' => 43,
+        'blue_bg' => 44,
         'magenta_bg' => 45,
-        'cyan_bg'    => 46,
-        'white_bg'   => 47
+        'cyan_bg' => 46,
+        'white_bg' => 47
     );
 
 
-    public const PARTS = ['benchmark','sysifo'];
+    public const PARTS = ['benchmark', 'sysifo'];
 
 
     public static function set($str, $color): string
@@ -101,8 +101,7 @@ final class Output
             foreach ($array as $k => $v) {
                 if (\in_array(htmlentities($k), self::PARTS, true)) {
                     $result .= '' . htmlentities($k) . ':';
-                }
-                else {
+                } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
                 $result .= self::ArrayToText($v);
@@ -116,14 +115,56 @@ final class Output
     }
 
     /**
+     * @param $array
+     * @return string
+     */
+    public static function ArrayToHTML($array): string
+    {
+        $result = '';
+        if (\is_array($array)) {
+            $result .= '<table>';
+            foreach ($array as $k => $v) {
+                $result .= '<tr><td>';
+                $result .= '<strong>' . htmlentities($k) . '</strong></td><td>';
+                $result .= array_to_html($v);
+                $result .= '</td></tr>';
+            }
+            $result .= '\n</table>';
+        } else {
+            $result = htmlentities($array);
+        }
+        return $result;
+    }
+
+    /**
      * Display tests results
      * @param $array
      */
     public static function DisplayResults($array): void
     {
-        /** @noinspection ForgottenDebugOutputInspection */
-        echo self::ArrayToText($array);
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(self::set('Finished', 'green+bold') . ' all tests.' . PHP_EOL);
+        if (self::is_cli()) {
+            echo self::ArrayToText($array);
+            /** @noinspection ForgottenDebugOutputInspection */
+            error_log(self::set('Finished', 'green+bold') . ' all tests.' . PHP_EOL);
+        }
+        else {
+            echo self::ArrayToHTML($array);
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    private static function is_cli(): bool
+    {
+        if (\defined('STDIN')) {
+            return true;
+        }
+
+        if (empty($_SERVER['REMOTE_ADDR']) && !isset($_SERVER['HTTP_USER_AGENT']) && \count($_SERVER['argv']) > 0) {
+            return true;
+        }
+
+        return false;
     }
 }
