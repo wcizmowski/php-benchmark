@@ -148,9 +148,11 @@ final class Output
     public static function DisplayResults($array)
     {
         if (self::is_cli()) {
+            /** @noinspection ForgottenDebugOutputInspection */
+            error_log(self::set('-------- Start ', 'green+bold'));
             echo self::ArrayToText($array);
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(self::set('Finished', 'green+bold') . ' all tests.' . PHP_EOL);
+            error_log(self::set('-------- End ', 'green+bold') . PHP_EOL);
         }
         else {
             echo self::ArrayToHTML($array);
