@@ -147,7 +147,7 @@ final class Output
      */
     public static function DisplayResults($array)
     {
-        if (self::is_cli()) {
+        if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
             error_log(self::set('-------- Start ', 'green+bold'));
             echo self::ArrayToText($array);
@@ -162,7 +162,7 @@ final class Output
     /**
      * @return bool
      */
-    private static function is_cli()
+    private static function isCommandLineMode()
     {
         if (\defined('STDIN')) {
             return true;
