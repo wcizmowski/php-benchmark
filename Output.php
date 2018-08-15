@@ -53,7 +53,7 @@ final class Output
     );
 
 
-    const PARTS = ['benchmark', 'sysinfo'];
+    const PARTS = ['benchmark', 'sysinfo', 'mysql'];
 
 
     public static function set($str, $color)
@@ -100,7 +100,7 @@ final class Output
             $result .= PHP_EOL;
             foreach ($array as $k => $v) {
                 if (\in_array(htmlentities($k), self::PARTS, true)) {
-                    $result .= '' . htmlentities($k) . ':';
+                    $result .= '' . self::set(htmlentities($k), 'green') . ':';
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }

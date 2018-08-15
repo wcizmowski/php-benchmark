@@ -17,6 +17,8 @@ class TestDB extends TestBase
 
     private $options = [];
 
+    private $connected;
+
     /**
      * Init DB
      * @param string $host
@@ -44,29 +46,42 @@ class TestDB extends TestBase
         $timeStart = microtime(true);
 
         try {
+            error_reporting(0);
             $link = mysqli_connect($this->options['db.host'], $this->options['db.user'], $this->options['db.pw']);
-            $result['benchmark']['mysql']['connect'] = $this->timer_diff($timeStart);
+            error_reporting(1);
+            if ($link) {
+                $this->connected = true ;
+                $result['benchmark']['mysql']['connect'] = $this->timer_diff($timeStart);
 
-            mysqli_select_db($link, $this->options['db.name']);
-            $result['benchmark']['mysql']['select_db'] = $this->timer_diff($timeStart);
+                mysqli_select_db($link, $this->options['db.name']);
+                $result['benchmark']['mysql']['select_db'] = $this->timer_diff($timeStart);
 
-            $dbResult = mysqli_query($link, 'SELECT VERSION() as version;');
-            $arr_row = mysqli_fetch_array($dbResult);
-            $result['sysinfo']['mysql_version'] = $arr_row['version'];
-            $result['benchmark']['mysql']['query_version'] = $this->timer_diff($timeStart);
+                $dbResult = mysqli_query($link, 'SELECT VERSION() as version;');
+                $arr_row = mysqli_fetch_array($dbResult);
+                $result['sysinfo']['mysql_version'] = $arr_row['version'];
+                $result['benchmark']['mysql']['query_version'] = $this->timer_diff($timeStart);
 
-            $query = "SELECT BENCHMARK(1000000,ENCODE('hello',RAND()));";
-            $dbResult = mysqli_query($link, $query);
-            $result['benchmark']['mysql']['query_benchmark'] = $this->timer_diff($timeStart);
+                $query = "SELECT BENCHMARK(1000000,ENCODE('hello',RAND()));";
+                $dbResult = mysqli_query($link, $query);
+                $result['benchmark']['mysql']['query_benchmark'] = $this->timer_diff($timeStart);
 
-            mysqli_close($link);
+                mysqli_close($link);
+
+                $result['benchmark']['mysql']['total'] = $this->timer_diff($timeStart);
+            }
         }
         catch (\Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
-        $result['benchmark']['mysql']['total'] = $this->timer_diff($timeStart);
-
         return $result;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConnected()
+    {
+        return $this->connected;
     }
 }
