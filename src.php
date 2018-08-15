@@ -20,7 +20,7 @@ $options = [];
 // Optional: mysql performance test
 //$options['db.host'] = '127.0.0.1';
 //$options['db.user'] = 'root';
-//$options['db.pw'] = '';
+//$options['db.pw'] = 'mIf#pxWsR1r08lck';
 //$options['db.name'] = 'test';
 
 // -----------------------------------------------------------------------------
