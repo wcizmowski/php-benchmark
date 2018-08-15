@@ -92,7 +92,7 @@ final class Output
      * @param $array
      * @return string
      */
-    public static function DisplayText($array): string
+    public static function ArrayToText($array): string
     {
         $result = '';
 
@@ -105,12 +105,8 @@ final class Output
                 else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
-                echo $result;
-                $result = self::DisplayText($v);
-                /** @noinspection ForgottenDebugOutputInspection */
-                error_log(self::set($result, 'green+bold'));
-                //$result = PHP_EOL;
-                //echo $result;
+                $result .= self::ArrayToText($v);
+                $result .= PHP_EOL;
             }
         } else {
             $result = htmlentities($array);
@@ -126,8 +122,8 @@ final class Output
     public static function DisplayResults($array): void
     {
         /** @noinspection ForgottenDebugOutputInspection */
-        self::DisplayText($array);
+        echo self::ArrayToText($array);
         /** @noinspection ForgottenDebugOutputInspection */
-        error_log(self::set('Finished', 'green+bold') . ' all tests.');
+        error_log(self::set('Finished', 'green+bold') . ' all tests.' . PHP_EOL);
     }
 }

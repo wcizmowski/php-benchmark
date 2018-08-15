@@ -20,7 +20,7 @@ class TestString extends TestBase
      * @param $result
      * @param int $count
      */
-    public function Test(&$result, $count = 99999)
+    public function Test(&$result, $count = 99999): void
     {
         $timeStart = microtime(true);
 
@@ -35,6 +35,6 @@ class TestString extends TestBase
             }
         }
 
-        $result['benchmark']['string'] = timer_diff($timeStart);
+        $result['benchmark']['string'] = $this->timer_diff($timeStart);
     }
 }

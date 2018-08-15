@@ -6,11 +6,15 @@ namespace Tests;
 require_once 'TestBase.php';
 require_once 'TestMath.php';
 require_once 'TestLoops.php';
-require_once __DIR__.'/../Output.php';
+require_once 'TestIfElse.php';
+require_once 'TestString.php';
+require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
 use TestMath\TestMath;
 use TestLoops\TestLoops;
+use TestIfElse\TestIfElse;
+use TestString\TestString;
 use Output\Output;
 
 class Test extends TestBase
@@ -20,6 +24,8 @@ class Test extends TestBase
 
     private $testLoops;
 
+    private $testIfElse;
+
     public function __construct($count = 9999)
     {
         parent::__construct($count);
@@ -27,6 +33,8 @@ class Test extends TestBase
         $this->count = $count;
         $this->testMath = new TestMath();
         $this->testLoops = new TestLoops();
+        $this->testIfElse = new TestIfElse();
+        $this->testString = new TestString();
     }
 
     /**
@@ -40,7 +48,7 @@ class Test extends TestBase
     /**
      * @param int $count
      */
-    public function setCount($count)
+    public function setCount($count): void
     {
         $this->count = $count;
     }
@@ -48,12 +56,14 @@ class Test extends TestBase
     /**
      *  Run all test
      */
-    public function RunTest()
+    public function RunTest(): void
     {
         $this->timeStart = microtime(true);
 
-        $this->testMath->Test($this->result,100000);
-        $this->testLoops->Test($this->result,1000000);
+        $this->testMath->Test($this->result, 100000);
+        $this->testLoops->Test($this->result, 1000000);
+        $this->testIfElse->Test($this->result, 10000000);
+        $this->testString->Test($this->result, 100000);
 
         $this->result['total'] = $this->timer_diff($this->timeStart);
     }

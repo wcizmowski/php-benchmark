@@ -20,7 +20,7 @@ class TestLoops extends TestBase
      * @param $result
      * @param int $count
      */
-    public function Test(&$result, $count = 999999)
+    public function Test(&$result, $count = 999999): void
     {
         $timeStart = microtime(true);
 
