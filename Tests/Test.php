@@ -7,6 +7,7 @@ require_once 'TestMath.php';
 require_once 'TestLoops.php';
 require_once 'TestIfElse.php';
 require_once 'TestString.php';
+
 require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
@@ -24,6 +25,8 @@ class Test extends TestBase
     private $testLoops;
 
     private $testIfElse;
+
+    private $testString;
 
     public function __construct($count = 9999)
     {

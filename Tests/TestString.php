@@ -20,7 +20,7 @@ class TestString extends TestBase
      * @param $result
      * @param int $count
      */
-    public function Test(&$result, $count = 99999): void
+    public function Test(&$result, $count = 99999)
     {
         $timeStart = microtime(true);
 

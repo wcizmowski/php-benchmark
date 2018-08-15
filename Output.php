@@ -92,7 +92,7 @@ final class Output
      * @param $array
      * @return string
      */
-    public static function ArrayToText($array): string
+    public static function ArrayToText($array)
     {
         $result = '';
 
@@ -123,7 +123,7 @@ final class Output
      * @param $array
      * @return string
      */
-    public static function ArrayToHTML($array): string
+    public static function ArrayToHTML($array)
     {
         $result = '';
         if (\is_array($array)) {
@@ -145,7 +145,7 @@ final class Output
      * Display tests results
      * @param $array
      */
-    public static function DisplayResults($array): void
+    public static function DisplayResults($array)
     {
         if (self::is_cli()) {
             echo self::ArrayToText($array);
@@ -160,7 +160,7 @@ final class Output
     /**
      * @return bool
      */
-    private static function is_cli(): bool
+    private static function is_cli()
     {
         if (\defined('STDIN')) {
             return true;
