@@ -126,7 +126,7 @@ final class Output
             foreach ($array as $k => $v) {
                 $result .= '<tr><td>';
                 $result .= '<strong>' . htmlentities($k) . '</strong></td><td>';
-                $result .= array_to_html($v);
+                $result .= self::ArrayToHTML($v);
                 $result .= '</td></tr>';
             }
             $result .= '\n</table>';
