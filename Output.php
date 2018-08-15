@@ -105,7 +105,7 @@ final class Output
                     $result .= '' . htmlentities($k) . ' = ';
                 }
                 if (strpos($v,'.')) {
-                    $result .= self::set(self::ArrayToText($v), 'blue');
+                    $result .= self::set(self::ArrayToText($v), 'yellow');
                 }
                 else {
                     $result .= self::ArrayToText($v);
