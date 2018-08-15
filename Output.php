@@ -129,7 +129,7 @@ final class Output
                 $result .= self::ArrayToHTML($v);
                 $result .= '</td></tr>';
             }
-            $result .= '\n</table>';
+            $result .= '</table>';
         } else {
             $result = htmlentities($array);
         }
