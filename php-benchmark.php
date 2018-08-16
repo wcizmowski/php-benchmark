@@ -8,11 +8,11 @@
  */
 
 if (!file_exists('config.inc.php')) {
-    /** @noinspection ForgottenDebugOutputInspection */
-    error_log(PHP_EOL .
+    echo
+        PHP_EOL .
         'File config.inc.php is missing' . PHP_EOL .
-        'Copy it from config.sample.inc.php' . PHP_EOL
-    );
+        'Copy it from config.sample.inc.php' . PHP_EOL .
+        PHP_EOL;
     exit;
 }
 
@@ -23,12 +23,11 @@ use Tests\Test;
 use Output\Output;
 
 
-$opt = getopt('',['db', 'help']);
+$opt = getopt('', ['db', 'help']);
 
-if (Output::isCommandLineMode() && (isset($opt['help']) ||(!file_exists('config.inc.php')))) {
+if (Output::isCommandLineMode() && (isset($opt['help']) || (!file_exists('config.inc.php')))) {
     Output::DisplayHelp();
-}
-else {
+} else {
     $test = new Test(isset($opt['db']) || isset($_GET['db']));
     $test->RunTest();
     $test->DisplayResults();

@@ -175,7 +175,7 @@ final class Output
      * Display app info
      *
      */
-    public static function DisplayHelp($text, $color)
+    public static function DisplayHelp()
     {
         /** @noinspection ForgottenDebugOutputInspection */
         error_log( PhpAnsiColor::set(INFO1, 'white'));
