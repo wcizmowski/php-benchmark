@@ -25,13 +25,19 @@
 namespace Output;
 
 require_once 'PhpAnsiColor.php';
+require_once  __DIR__ . '/Tests/TestBase.php';
 
-use Phalcon\Config\Adapter\Php;
 use PhpAnsiColor\PhpAnsiColor;
+use TestBase\TestBase;
 
 final class Output
 {
-    const PARTS = ['benchmark', 'sysinfo', 'mysql'];
+    const PARTS = [
+        TestBase::PARTS_SYSINFO,
+        TestBase::PARTS_BENCHMARK,
+        TestBase::PARTS_MYSQL,
+        TestBase::PARTS_TOTAL,
+    ];
 
     /**
      * @param $array
@@ -40,17 +46,29 @@ final class Output
     public static function ArrayToText($array)
     {
         $result = '';
+        $totalTime = false ;
 
         if (\is_array($array)) {
             $result .= PHP_EOL;
             foreach ($array as $k => $v) {
                 if (\in_array(htmlentities($k), self::PARTS, true)) {
-                    $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green') . ':';
+                    if (htmlentities($k)!==TestBase::PARTS_TOTAL) {
+                        $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green') . ':';
+                    }
+                    else {
+                        $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green+bold') . ':';
+                        $totalTime = true ;
+                    }
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
                 if (!\is_array($v) && strpos($v,'.')) {
-                    $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow');
+                    if (!$totalTime) {
+                        $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow');
+                    }
+                    else {
+                        $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow+bold');
+                    }
                 }
                 else {
                     $result .= self::ArrayToText($v);
@@ -148,10 +166,10 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PhpAnsiColor::set('-------- Start ', 'green+bold'));
+            error_log(PhpAnsiColor::set('-------- Start --------', 'green+bold'));
             echo self::ArrayToText($array);
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PhpAnsiColor::set('-------- End ', 'green+bold') . PHP_EOL);
+            error_log(PHP_EOL . PhpAnsiColor::set('-------- End --------', 'green+bold') . PHP_EOL);
         }
         else {
             self::DisplayHTMLHeader();

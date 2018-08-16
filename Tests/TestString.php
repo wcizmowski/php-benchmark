@@ -18,6 +18,7 @@ class TestString extends TestBase
 {
 
     const TEST_NAME = 'string';
+
     /**
      * @param $result
      * @param int $count

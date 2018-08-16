@@ -10,8 +10,11 @@ namespace TestBase;
 
 abstract class TestBase
 {
+    const PARTS_VERSION_INFO = 'PHP benchmark version';
     const PARTS_SYSINFO = 'sysinfo';
     const PARTS_BENCHMARK = 'benchmark';
+    const PARTS_MYSQL = 'mysql';
+    const PARTS_TOTAL = 'total';
 
     public $count;
 
@@ -25,10 +28,10 @@ abstract class TestBase
      */
     public function __construct($count = 9999)
     {
-        $this->result['PHP benchmark version'] = '1.0';
-        $this->result['sysinfo']['time'] = date('Y-m-d H:i:s');
-        $this->result['sysinfo']['php_version'] = PHP_VERSION;
-        $this->result['sysinfo']['platform'] = PHP_OS;
+        $this->result[self::PARTS_VERSION_INFO] = '1.0';
+        $this->result[self::PARTS_SYSINFO]['time'] = date('Y-m-d H:i:s');
+        $this->result[self::PARTS_SYSINFO]['php_version'] = PHP_VERSION;
+        $this->result[self::PARTS_SYSINFO]['platform'] = PHP_OS;
 
         $this->count = $count;
 
