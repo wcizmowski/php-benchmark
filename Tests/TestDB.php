@@ -75,7 +75,7 @@ class TestDB extends TestBase
 
             mysqli_close($link);
 
-            $result['benchmark'][self::TEST_NAME]['total'] = $this->timer_diff($timeStart);
+            $result['benchmark'][self::TEST_NAME]['mysql total'] = $this->timer_diff($timeStart);
         }
 
         return $result;
