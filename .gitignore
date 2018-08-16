@@ -3,3 +3,4 @@
 *.sql
 *.zip
 *.rpm
+config.inc.php
