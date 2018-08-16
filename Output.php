@@ -116,8 +116,7 @@ final class Output
                             background: #FAFAFA; 
                         }
                         tbody tr:nth-child(odd){
-                            background-color: #FAFAFA;
-                            color: #fff;
+                            background-color: #AAAAAA;
                         }
                         </style>
                 </head>
