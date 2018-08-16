@@ -88,7 +88,7 @@ final class Output
     {
         $result = '';
         if (\is_array($array)) {
-            $result .= '<table>';
+            $result .= '<table align="center">';
             foreach ($array as $k => $v) {
                 $result .= '<tr><td>';
                 $result .= '<strong>' . htmlentities($k) . '</strong></td><td>';
