@@ -24,6 +24,7 @@
 
 namespace Output;
 
+require_once 'config.inc.php';
 require_once 'PhpAnsiColor.php';
 require_once  __DIR__ . '/Tests/TestBase.php';
 
@@ -171,6 +172,22 @@ final class Output
     }
 
     /**
+     * Display app info
+     *
+     */
+    public static function DisplayHelp()
+    {
+        /** @noinspection ForgottenDebugOutputInspection */
+        error_log( PhpAnsiColor::set(INFO1, 'white'));
+        /** @noinspection ForgottenDebugOutputInspection */
+        error_log( PhpAnsiColor::set(INFO2, 'yellow'));
+        /** @noinspection ForgottenDebugOutputInspection */
+        error_log( PhpAnsiColor::set(INFO3, 'white'));
+        /** @noinspection ForgottenDebugOutputInspection */
+        error_log( PhpAnsiColor::set(INFO4, 'white'));
+    }
+
+    /**
      * Display tests results
      * @param $array
      */
@@ -193,7 +210,7 @@ final class Output
     /**
      * @return bool
      */
-    private static function isCommandLineMode()
+    public static function isCommandLineMode()
     {
         if (\defined('STDIN')) {
             return true;

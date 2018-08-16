@@ -34,15 +34,11 @@ class Test extends TestBase
 
     private $testArrays;
 
-    private $opt;
-
     private $testDB;
 
-    public function __construct($count = 9999)
+    public function __construct($dbTest, $count = 9999)
     {
         parent::__construct($count);
-
-        $this->opt = getopt('',['db', 'help']);
 
         $this->count = $count;
         $this->testMath = new TestMath();
@@ -51,7 +47,7 @@ class Test extends TestBase
         $this->testString = new TestString();
         $this->testArrays = new TestArrays();
 
-        if (isset($this->opt['db'])) {
+        if ($dbTest) {
             $this->testDB = new TestDB();
             $this->testDB->InitDB();
         }
@@ -86,7 +82,7 @@ class Test extends TestBase
         $this->testString->Test($this->result, COUNT_STRING);
         $this->testArrays->Test($this->result,COUNT_ARRAYS);
 
-        if (isset($this->opt['db'])) {
+        if ($this->testDB!==null) {
             $this->testDB->Test($this->result);
         }
 

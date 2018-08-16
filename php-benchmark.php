@@ -8,10 +8,19 @@
  */
 
 require_once __DIR__ . '/Tests/Test.php';
+require_once 'Output.php';
 
 use Tests\Test;
+use Output\Output;
 
-$test = new Test();
+$opt = getopt('',['db', 'help']);
 
-$test->RunTest();
-$test->DisplayResults();
+$test = new Test(isset($opt['db']));
+
+if (isset($opt['help']) && Output::isCommandLineMode()) {
+    Output::DisplayHelp();
+}
+else {
+    $test->RunTest();
+    $test->DisplayResults();
+}
