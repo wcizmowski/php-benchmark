@@ -105,43 +105,10 @@ final class Output
     /**
      *  Display header of HTML page
      */
-    private static function DisplayHTMLHeader()
+    private static function DisplayHTML($text)
     {
-        echo '<!DOCTYPE html>
-                <html>
-                <head>
-                    <style>
-                        table {
-                            color: #333; 
-                            font-family: Helvetica, Arial, sans-serif;
-                            width: 800px;
-                            border-collapse:
-                            collapse; border-spacing: 8;
-                        }
-                    
-                        td, th {
-                            border: 1px solid #CCC; height: 30px;
-                        } 
-                    
-                        th {
-                            background: #F3F3F3;
-                            font-weight: bold; 
-                        }
-                    
-                        td {
-                            background: #FAFAFA; 
-                        }
-                        tr:nth-of-type(odd) {
-                            background-color: rgba(149,149,149,0.28);
-                        }   
-                        </style>
-                </head>
-            <body>';
-    }
-
-    private static function DisplayHTMLFooter()
-    {
-        echo '</body></html>';
+        $content = file_get_contents('output.html');
+        return str_replace('[content]',$text,$content);
     }
 
     /**
@@ -197,9 +164,7 @@ final class Output
             /** @noinspection ForgottenDebugOutputInspection */
             error_log(PHP_EOL . PhpAnsiColor::set('-------- Results End --------', 'green+bold') . PHP_EOL);
         } else {
-            self::DisplayHTMLHeader();
-            echo self::ArrayToHTML($array);
-            self::DisplayHTMLFooter();
+            echo self::DisplayHTML(self::ArrayToHTML($array));
         }
     }
 
