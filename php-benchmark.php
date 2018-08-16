@@ -15,7 +15,7 @@ use Output\Output;
 
 $opt = getopt('',['db', 'help']);
 
-$test = new Test(isset($opt['db']));
+$test = new Test(isset($opt['db']) || isset($_GET['db']));
 
 if (isset($opt['help']) && Output::isCommandLineMode()) {
     Output::DisplayHelp();
