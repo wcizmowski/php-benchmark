@@ -38,6 +38,13 @@ class TestArrays extends TestBase
         for ($i = 0; $i < $count; $i++) {
             $a['test' . $i] = $i;
         }
+        unset($a);
+
+        for ($i = 0; $i < $count; $i++) {
+            $a = array('test' . $i => $i);
+            array_key_exists('test' . $i, $a);
+        }
+        unset($a);
 
         $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
