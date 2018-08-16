@@ -16,6 +16,7 @@ if (!file_exists('config.inc.php')) {
     exit;
 }
 
+require_once 'config.inc.php';
 require_once __DIR__ . '/Tests/Test.php';
 require_once 'Output.php';
 
