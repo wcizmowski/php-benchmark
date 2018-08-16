@@ -10,6 +10,9 @@ namespace TestBase;
 
 abstract class TestBase
 {
+    const PARTS_SYSINFO = 'sysinfo';
+    const PARTS_BENCHMARK = 'benchmark';
+
     public $count;
 
     public $result = [];

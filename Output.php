@@ -24,69 +24,14 @@
 
 namespace Output;
 
+require_once 'PhpAnsiColor.php';
+
+use Phalcon\Config\Adapter\Php;
+use PhpAnsiColor\PhpAnsiColor;
+
 final class Output
 {
-    private static $ANSI_CODES = array(
-        'off' => 0,
-        'bold' => 1,
-        'italic' => 3,
-        'underline' => 4,
-        'blink' => 5,
-        'inverse' => 7,
-        'hidden' => 8,
-        'black' => 30,
-        'red' => 31,
-        'green' => 32,
-        'yellow' => 33,
-        'blue' => 34,
-        'magenta' => 35,
-        'cyan' => 36,
-        'white' => 37,
-        'black_bg' => 40,
-        'red_bg' => 41,
-        'green_bg' => 42,
-        'yellow_bg' => 43,
-        'blue_bg' => 44,
-        'magenta_bg' => 45,
-        'cyan_bg' => 46,
-        'white_bg' => 47
-    );
-
-
     const PARTS = ['benchmark', 'sysinfo', 'mysql'];
-
-
-    public static function set($str, $color)
-    {
-        $color_attrs = explode('+', $color);
-        $ansi_str = '';
-        foreach ($color_attrs as $attr) {
-            $ansi_str .= "\033[" . self::$ANSI_CODES[$attr] . 'm';
-        }
-        $ansi_str .= $str . "\033[" . self::$ANSI_CODES['off'] . 'm';
-
-        return $ansi_str;
-    }
-
-    public static function log($message, $color)
-    {
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(self::set($message, $color));
-    }
-
-
-    public static function replace($full_text, $search_regexp, $color)
-    {
-        $new_text = preg_replace_callback(
-            "/($search_regexp)/",
-            function ($matches) use ($color) {
-                return self::set($matches[1], $color);
-            },
-            $full_text
-        );
-
-        return $new_text === true ? $new_text : $full_text;
-    }
 
     /**
      * @param $array
@@ -100,12 +45,12 @@ final class Output
             $result .= PHP_EOL;
             foreach ($array as $k => $v) {
                 if (\in_array(htmlentities($k), self::PARTS, true)) {
-                    $result .= '' . self::set(htmlentities($k), 'green') . ':';
+                    $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green') . ':';
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
                 if (!\is_array($v) && strpos($v,'.')) {
-                    $result .= self::set(self::ArrayToText($v), 'yellow');
+                    $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow');
                 }
                 else {
                     $result .= self::ArrayToText($v);
@@ -141,6 +86,41 @@ final class Output
         return $result;
     }
 
+    private static function DisplayHTMLHeader()
+    {
+        echo '<!DOCTYPE html>\n<html>
+                <head>
+                    <style>
+                        table {
+                            color: #333; 
+                            font-family: Helvetica, Arial, sans-serif;
+                            width: 640px;
+                            border-collapse:
+                            collapse; border-spacing: 0;
+                        }
+                    
+                        td, th {
+                            border: 1px solid #CCC; height: 30px;
+                        } 
+                    
+                        th {
+                            background: #F3F3F3;
+                            font-weight: bold; 
+                        }
+                    
+                        td {
+                            background: #FAFAFA; 
+                        }
+                        </style>
+                </head>
+            <body>';
+    }
+
+    private static function DisplayHTMLFooter()
+    {
+        echo '</body';
+    }
+
     /**
      * Display tests results
      * @param $text
@@ -149,7 +129,7 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log('Test ' . self::set($text, 'yellow') . ' ...');
+            error_log('Test ' . PhpAnsiColor::set($text, 'yellow') . ' ...');
         }
     }
 
@@ -161,13 +141,15 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(self::set('-------- Start ', 'green+bold'));
+            error_log(PhpAnsiColor::set('-------- Start ', 'green+bold'));
             echo self::ArrayToText($array);
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(self::set('-------- End ', 'green+bold') . PHP_EOL);
+            error_log(PhpAnsiColor::set('-------- End ', 'green+bold') . PHP_EOL);
         }
         else {
+            self::DisplayHTMLHeader();
             echo self::ArrayToHTML($array);
+            self::DisplayHTMLFooter();
         }
     }
 

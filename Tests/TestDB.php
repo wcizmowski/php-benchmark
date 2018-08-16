@@ -70,7 +70,7 @@ class TestDB extends TestBase
             $result['benchmark'][self::TEST_NAME]['query_version'] = $this->timer_diff($timeStart);
 
             $query = "SELECT BENCHMARK(1000000,ENCODE('hello',RAND()));";
-            $dbResult = mysqli_query($link, $query);
+            mysqli_query($link, $query);
             $result['benchmark'][self::TEST_NAME]['query_benchmark'] = $this->timer_diff($timeStart);
 
             mysqli_close($link);
