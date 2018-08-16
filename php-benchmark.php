@@ -7,20 +7,29 @@
  * Time: 13:23
  */
 
+if (!file_exists('config.inc.php')) {
+    /** @noinspection ForgottenDebugOutputInspection */
+    error_log(PHP_EOL .
+        'File config.inc.php is missing' . PHP_EOL .
+        'Copy it from config.sample.inc.php' . PHP_EOL
+    );
+    exit;
+}
+
 require_once __DIR__ . '/Tests/Test.php';
 require_once 'Output.php';
 
 use Tests\Test;
 use Output\Output;
 
+
 $opt = getopt('',['db', 'help']);
 
-$test = new Test(isset($opt['db']) || isset($_GET['db']));
-
-if (isset($opt['help']) && Output::isCommandLineMode()) {
+if (Output::isCommandLineMode() && (isset($opt['help']) ||(!file_exists('config.inc.php')))) {
     Output::DisplayHelp();
 }
 else {
+    $test = new Test(isset($opt['db']) || isset($_GET['db']));
     $test->RunTest();
     $test->DisplayResults();
 }

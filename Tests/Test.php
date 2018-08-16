@@ -86,8 +86,7 @@ class Test extends TestBase
             $this->testDB->Test($this->result);
         }
 
-
-        $this->result['total'] = $this->timer_diff($this->timeStart);
+        $this->result[self::PARTS_TOTAL] = $this->timer_diff($this->timeStart);
     }
 
     /**
