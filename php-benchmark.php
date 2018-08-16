@@ -22,13 +22,12 @@ require_once 'Output.php';
 use Tests\Test;
 use Output\Output;
 
+$opt = getopt('', [OPTION_DB, OPTION_HELP]);
 
-$opt = getopt('', ['db', 'help']);
-
-if (Output::isCommandLineMode() && (isset($opt['help']) || (!file_exists('config.inc.php')))) {
+if (Output::isCommandLineMode() && (isset($opt[OPTION_HELP]) || (!file_exists('config.inc.php')))) {
     Output::DisplayHelp();
 } else {
-    $test = new Test(isset($opt['db']) || isset($_GET['db']));
+    $test = new Test(isset($opt[OPTION_DB]) || isset($_GET[OPTION_DB]));
     $test->RunTest();
     $test->DisplayResults();
 }
