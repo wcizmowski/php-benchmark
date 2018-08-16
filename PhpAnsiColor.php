@@ -80,6 +80,6 @@ class PhpAnsiColor
             $full_text
         );
 
-        return $new_text === true ? $new_text : $full_text;
+        return $new_text === null ? $full_text : $new_text;
     }
 }
