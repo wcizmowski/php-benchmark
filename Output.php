@@ -160,6 +160,18 @@ final class Output
 
     /**
      * Display tests results
+     * @param $text
+     */
+    public static function DisplayProgressInside($text)
+    {
+        if (self::isCommandLineMode()) {
+            /** @noinspection ForgottenDebugOutputInspection */
+            error_log( ' | ' . PhpAnsiColor::set($text, 'yellow'));
+        }
+    }
+
+    /**
+     * Display tests results
      * @param $array
      */
     public static function DisplayResults($array)
