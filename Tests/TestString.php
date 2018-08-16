@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+
 /**
  * Created by PhpStorm.
  * User: witek
@@ -10,19 +10,22 @@ declare(strict_types=1);
 namespace TestString;
 
 require_once 'TestBase.php';
+require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
+use Output\Output;
 
 class TestString extends TestBase
 {
 
+    const TEST_NAME = 'string';
     /**
      * @param $result
      * @param int $count
      */
     public function Test(&$result, $count = 99999)
     {
-        echo 'Test String...' . PHP_EOL;
+        Output::DisplayProgress(self::TEST_NAME);
 
         $timeStart = microtime(true);
 
@@ -37,6 +40,6 @@ class TestString extends TestBase
             }
         }
 
-        $result['benchmark']['string'] = $this->timer_diff($timeStart);
+        $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
 }

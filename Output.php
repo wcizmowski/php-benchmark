@@ -143,6 +143,18 @@ final class Output
 
     /**
      * Display tests results
+     * @param $text
+     */
+    public static function DisplayProgress($text)
+    {
+        if (self::isCommandLineMode()) {
+            /** @noinspection ForgottenDebugOutputInspection */
+            error_log('Test ' . self::set($text, 'yellow') . ' ...');
+        }
+    }
+
+    /**
+     * Display tests results
      * @param $array
      */
     public static function DisplayResults($array)

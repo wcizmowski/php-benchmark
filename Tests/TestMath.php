@@ -10,11 +10,15 @@
 namespace TestMath;
 
 require_once 'TestBase.php';
+require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
+use Output\Output;
 
 class TestMath extends TestBase
 {
+
+    const TEST_NAME = 'math';
 
     /**
      * @param $result
@@ -22,7 +26,7 @@ class TestMath extends TestBase
      */
     public function Test(&$result, $count = 99999)
     {
-        echo 'Test Math...' . PHP_EOL;
+        Output::DisplayProgress(self::TEST_NAME);
 
         $timeStart = microtime(true);
 
@@ -35,6 +39,6 @@ class TestMath extends TestBase
             }
         }
 
-        $result['benchmark']['math'] = $this->timer_diff($timeStart);
+        $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
 }

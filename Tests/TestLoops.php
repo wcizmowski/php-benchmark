@@ -10,11 +10,15 @@ declare(strict_types=1);
 namespace TestLoops;
 
 require_once 'TestBase.php';
+require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
+use Output\Output;
 
 class TestLoops extends TestBase
 {
+
+    const TEST_NAME = 'loops';
 
     /**
      * @param $result
@@ -22,7 +26,7 @@ class TestLoops extends TestBase
      */
     public function Test(&$result, $count = 999999)
     {
-        echo 'Test Loops...' . PHP_EOL;
+        Output::DisplayProgress(self::TEST_NAME);
 
         $timeStart = microtime(true);
 
@@ -35,6 +39,6 @@ class TestLoops extends TestBase
             ++$i;
         }
 
-        $result['benchmark']['loops'] = $this->timer_diff($timeStart);
+        $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
 }

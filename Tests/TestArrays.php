@@ -10,10 +10,15 @@ namespace TestsArrays;
 
 require_once 'TestBase.php';
 
+require_once __DIR__ . '/../Output.php';
+
 use TestBase\TestBase;
+use Output\Output;
 
 class TestArrays extends TestBase
 {
+
+    const TEST_NAME = 'arrays';
 
     /**
      * @param $result
@@ -21,12 +26,14 @@ class TestArrays extends TestBase
      */
     public function Test(&$result, $count = 99999)
     {
+        Output::DisplayProgress(self::TEST_NAME);
+
         $timeStart = microtime(true);
 
         for ($i=0; $i<$count; $i++) {
             $a[] = $i;
         }
 
-        $result['benchmark']['arrays'] = $this->timer_diff($timeStart);
+        $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
 }

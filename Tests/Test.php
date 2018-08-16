@@ -9,7 +9,6 @@ require_once 'TestIfElse.php';
 require_once 'TestString.php';
 require_once 'TestArrays.php';
 require_once 'TestDB.php';
-
 require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;

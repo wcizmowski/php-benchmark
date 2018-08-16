@@ -9,11 +9,15 @@
 namespace TestIfElse;
 
 require_once 'TestBase.php';
+require_once __DIR__ . '/../Output.php';
 
 use TestBase\TestBase;
+use Output\Output;
 
 class TestIfElse extends TestBase
 {
+
+    const TEST_NAME = 'if else';
 
     /**
      * @param $result
@@ -21,7 +25,7 @@ class TestIfElse extends TestBase
      */
     public function Test(&$result, $count = 999999)
     {
-        echo 'Test if else...' . PHP_EOL;
+        Output::DisplayProgress(self::TEST_NAME);
 
         $timeStart = microtime(true);
 
@@ -36,6 +40,6 @@ class TestIfElse extends TestBase
             }
         }
 
-        $result['benchmark']['ifelse'] = $this->timer_diff($timeStart);
+        $result['benchmark'][self::TEST_NAME] = $this->timer_diff($timeStart);
     }
 }
