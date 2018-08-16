@@ -31,7 +31,7 @@ class TestDB extends TestBase
      * @param string $name
      */
     public function InitDB(
-        $host = 'codersarea.com:3306',
+        $host = 'localhost',
         $user = 'test',
         $password = 'mIf#pxWsR1r08lck',
         $name = 'test'
