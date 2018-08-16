@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+require_once __DIR__ . '/../config.inc.php';
 require_once 'TestBase.php';
 require_once 'TestMath.php';
 require_once 'TestLoops.php';
@@ -79,11 +80,11 @@ class Test extends TestBase
     {
         $this->timeStart = microtime(true);
 
-        $this->testMath->Test($this->result, 100000);
-        $this->testLoops->Test($this->result, 1000000);
-        $this->testIfElse->Test($this->result, 10000000);
-        $this->testString->Test($this->result, 100000);
-        $this->testArrays->Test($this->result,1000000);
+        $this->testMath->Test($this->result, COUNT_MATH);
+        $this->testLoops->Test($this->result, COUNT_LOOPS);
+        $this->testIfElse->Test($this->result, COUNT_IFELSE);
+        $this->testString->Test($this->result, COUNT_STRING);
+        $this->testArrays->Test($this->result,COUNT_ARRAYS);
 
         if (isset($this->opt['db'])) {
             $this->testDB->Test($this->result);

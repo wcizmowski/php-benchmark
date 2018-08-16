@@ -8,6 +8,7 @@
 
 namespace TestDB;
 
+require_once __DIR__ . '/../config.inc.php';
 require_once 'TestBase.php';
 require_once __DIR__ . '/../Output.php';
 
@@ -31,10 +32,10 @@ class TestDB extends TestBase
      * @param string $name
      */
     public function InitDB(
-        $host = 'localhost',
-        $user = 'test',
-        $password = 'mIf#pxWsR1r08lck',
-        $name = 'test'
+        $host = DB_HOST,
+        $user = DB_USER,
+        $password = DB_PASSWORD,
+        $name = DB_NAME
     )
     {
         // Optional: mysql performance test
@@ -56,7 +57,6 @@ class TestDB extends TestBase
         $timeStart = microtime(true);
 
         Output::DisplayProgressInside('connect');
-
         $link = mysqli_connect($this->options['db.host'], $this->options['db.user'], $this->options['db.pw']);
 
         if ($link) {
@@ -74,7 +74,7 @@ class TestDB extends TestBase
             $result['benchmark'][self::TEST_NAME]['query_version'] = $this->timer_diff($timeStart);
 
             Output::DisplayProgressInside('query_benchmark');
-            $query = "SELECT BENCHMARK(1000000,ENCODE('hello',RAND()));";
+            $query = "SELECT BENCHMARK(,ENCODE('hello',RAND()));";
             mysqli_query($link, $query);
             $result['benchmark'][self::TEST_NAME]['query_benchmark'] = $this->timer_diff($timeStart);
 
