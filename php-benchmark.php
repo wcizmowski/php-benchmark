@@ -9,7 +9,9 @@
 
 require_once __DIR__ . '/Tests/Test.php';
 
-$test = new \Tests\Test();
+use Tests\Test;
+
+$test = new Test();
 
 $test->RunTest();
 $test->DisplayResults();
