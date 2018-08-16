@@ -86,17 +86,21 @@ final class Output
         return $result;
     }
 
+    /**
+     *  Display header of HTML page
+     */
     private static function DisplayHTMLHeader()
     {
-        echo '<!DOCTYPE html>\n<html>
+        echo '<!DOCTYPE html>
+                <html>
                 <head>
                     <style>
                         table {
                             color: #333; 
                             font-family: Helvetica, Arial, sans-serif;
-                            width: 640px;
+                            width: 800px;
                             border-collapse:
-                            collapse; border-spacing: 0;
+                            collapse; border-spacing: 8;
                         }
                     
                         td, th {
@@ -118,7 +122,7 @@ final class Output
 
     private static function DisplayHTMLFooter()
     {
-        echo '</body';
+        echo '</body></html>';
     }
 
     /**
