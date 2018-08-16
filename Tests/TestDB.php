@@ -74,7 +74,7 @@ class TestDB extends TestBase
             $result['benchmark'][self::TEST_NAME]['query_version'] = $this->timer_diff($timeStart);
 
             Output::DisplayProgressInside('query_benchmark');
-            $query = "SELECT BENCHMARK(,ENCODE('hello',RAND()));";
+            $query = 'SELECT BENCHMARK(' . COUNT_DB . ',ENCODE(\'hello\',RAND()));';
             mysqli_query($link, $query);
             $result['benchmark'][self::TEST_NAME]['query_benchmark'] = $this->timer_diff($timeStart);
 
