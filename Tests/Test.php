@@ -33,11 +33,15 @@ class Test extends TestBase
 
     private $testArrays;
 
+    private $opt;
+
     private $testDB;
 
     public function __construct($count = 9999)
     {
         parent::__construct($count);
+
+        $this->opt = getopt('',['db', 'help']);
 
         $this->count = $count;
         $this->testMath = new TestMath();
@@ -45,8 +49,11 @@ class Test extends TestBase
         $this->testIfElse = new TestIfElse();
         $this->testString = new TestString();
         $this->testArrays = new TestArrays();
-        $this->testDB = new TestDB();
-        $this->testDB->InitDB();
+
+        if (isset($this->opt['db'])) {
+            $this->testDB = new TestDB();
+            $this->testDB->InitDB();
+        }
     }
 
     /**
@@ -77,7 +84,11 @@ class Test extends TestBase
         $this->testIfElse->Test($this->result, 10000000);
         $this->testString->Test($this->result, 100000);
         $this->testArrays->Test($this->result,1000000);
-        $this->testDB->Test($this->result);
+
+        if (isset($this->opt['db'])) {
+            $this->testDB->Test($this->result);
+        }
+
 
         $this->result['total'] = $this->timer_diff($this->timeStart);
     }

@@ -63,7 +63,7 @@ class TestDB extends TestBase
             $this->connected = true;
             $result['benchmark'][self::TEST_NAME]['connect'] = $this->timer_diff($timeStart);
 
-            Output::DisplayProgressInside('seklect_db');
+            Output::DisplayProgressInside('select_db');
             mysqli_select_db($link, $this->options['db.name']);
             $result['benchmark'][self::TEST_NAME]['select_db'] = $this->timer_diff($timeStart);
 

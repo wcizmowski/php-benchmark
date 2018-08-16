@@ -178,10 +178,10 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PhpAnsiColor::set('-------- Start --------', 'green+bold'));
+            error_log(PhpAnsiColor::set('-------- Results begin --------', 'green+bold'));
             echo self::ArrayToText($array);
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PHP_EOL . PhpAnsiColor::set('-------- End --------', 'green+bold') . PHP_EOL);
+            error_log(PHP_EOL . PhpAnsiColor::set('-------- Results End --------', 'green+bold') . PHP_EOL);
         }
         else {
             self::DisplayHTMLHeader();
