@@ -13,7 +13,7 @@ define('COUNT_MATH', 100000);
 define('COUNT_ARRAYS', 100000);
 define('COUNT_DB', 1000000);
 define('COUNT_IFELSE', 10000000);
-define('COUNT_LOOPS', 1000000);
+define('COUNT_LOOPS', 10000000);
 define('COUNT_STRING', 100000);
 
 define('DB_HOST', 'localhost');
