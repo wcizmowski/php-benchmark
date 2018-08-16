@@ -115,6 +115,10 @@ final class Output
                         td {
                             background: #FAFAFA; 
                         }
+                        tbody tr:nth-child(odd){
+                            background-color: #FAFAFA;
+                            color: #fff;
+                        }
                         </style>
                 </head>
             <body>';
