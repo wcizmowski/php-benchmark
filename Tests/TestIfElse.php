@@ -21,7 +21,10 @@ class TestIfElse extends TestBase
      */
     public function Test(&$result, $count = 999999)
     {
+        echo 'Test if else...' . PHP_EOL;
+
         $timeStart = microtime(true);
+
         $j = 0;
         for ($i = 0; $i < $count; $i++) {
             if ($i === -1) {
@@ -32,6 +35,7 @@ class TestIfElse extends TestBase
                 ++$j;
             }
         }
+
         $result['benchmark']['ifelse'] = $this->timer_diff($timeStart);
     }
 }

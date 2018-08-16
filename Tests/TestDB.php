@@ -47,6 +47,8 @@ class TestDB extends TestBase
      */
     public function Test(&$result)
     {
+        echo 'Test database...' . PHP_EOL;
+
         $timeStart = microtime(true);
 
         $link = mysqli_connect($this->options['db.host'], $this->options['db.user'], $this->options['db.pw']);

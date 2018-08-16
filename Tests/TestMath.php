@@ -22,6 +22,8 @@ class TestMath extends TestBase
      */
     public function Test(&$result, $count = 99999)
     {
+        echo 'Test Math...' . PHP_EOL;
+
         $timeStart = microtime(true);
 
         $mathFunctions = ['abs', 'acos', 'asin', 'atan', 'bindec', 'floor', 'exp', 'sin',

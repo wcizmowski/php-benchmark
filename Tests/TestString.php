@@ -22,6 +22,8 @@ class TestString extends TestBase
      */
     public function Test(&$result, $count = 99999)
     {
+        echo 'Test String...' . PHP_EOL;
+
         $timeStart = microtime(true);
 
         $stringFunctions = ['addslashes', 'chunk_split', 'metaphone', 'strip_tags', 'md5', 'sha1',

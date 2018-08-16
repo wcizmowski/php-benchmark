@@ -22,6 +22,8 @@ class TestLoops extends TestBase
      */
     public function Test(&$result, $count = 999999)
     {
+        echo 'Test Loops...' . PHP_EOL;
+
         $timeStart = microtime(true);
 
         $j = 0;
