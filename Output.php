@@ -1,26 +1,4 @@
 <?php
-/**
- * php-ansi-color
- *
- * Original
- *     https://github.com/loopj/commonjs-ansi-color
- *
- * @code
- * <?php
- * require_once "ansi-color.php";
- *
- * use PhpAnsiColor\Color;
- *
- * // Print the word "Error" to stdout in red
- * error_log(Color::set("Error", "red"));
- *
- * // Print the word "Error" in red and underlined
- * error_log(Color::set("Error", "red+underline"));
- *
- * // Print the word "Success" in bold green, followed by a message
- * error_log(Color::set("Success", "green+bold"), "Something was successful!");
- * @endcode
- */
 
 namespace Output;
 
