@@ -104,6 +104,8 @@ final class Output
 
     /**
      *  Display header of HTML page
+     * @param $text
+     * @return mixed
      */
     private static function DisplayHTML($text)
     {
