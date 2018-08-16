@@ -80,9 +80,9 @@ class Test extends TestBase
         $this->testLoops->Test($this->result, COUNT_LOOPS);
         $this->testIfElse->Test($this->result, COUNT_IFELSE);
         $this->testString->Test($this->result, COUNT_STRING);
-        $this->testArrays->Test($this->result,COUNT_ARRAYS);
+        $this->testArrays->Test($this->result, COUNT_ARRAYS);
 
-        if ($this->testDB!==null) {
+        if ($this->testDB !== null) {
             $this->testDB->Test($this->result);
         }
 

@@ -30,7 +30,7 @@ class TestArrays extends TestBase
 
         $timeStart = microtime(true);
 
-        for ($i=0; $i<$count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $a[] = $i;
         }
 

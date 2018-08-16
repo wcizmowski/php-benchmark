@@ -26,7 +26,7 @@ namespace Output;
 
 require_once 'config.inc.php';
 require_once 'PhpAnsiColor.php';
-require_once  __DIR__ . '/Tests/TestBase.php';
+require_once __DIR__ . '/Tests/TestBase.php';
 
 use PhpAnsiColor\PhpAnsiColor;
 use TestBase\TestBase;
@@ -47,31 +47,28 @@ final class Output
     public static function ArrayToText($array)
     {
         $result = '';
-        $totalTime = false ;
+        $totalTime = false;
 
         if (\is_array($array)) {
             $result .= PHP_EOL;
             foreach ($array as $k => $v) {
                 if (\in_array(htmlentities($k), self::PARTS, true)) {
-                    if (htmlentities($k)!==TestBase::PARTS_TOTAL) {
+                    if (htmlentities($k) !== TestBase::PARTS_TOTAL) {
                         $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green') . ':';
-                    }
-                    else {
+                    } else {
                         $result .= '' . PhpAnsiColor::set(htmlentities($k), 'green+bold') . ':';
-                        $totalTime = true ;
+                        $totalTime = true;
                     }
                 } else {
                     $result .= '' . htmlentities($k) . ' = ';
                 }
-                if (!\is_array($v) && strpos($v,'.')) {
+                if (!\is_array($v) && strpos($v, '.')) {
                     if (!$totalTime) {
                         $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow');
-                    }
-                    else {
+                    } else {
                         $result .= PhpAnsiColor::set(self::ArrayToText($v), 'yellow+bold');
                     }
-                }
-                else {
+                } else {
                     $result .= self::ArrayToText($v);
                 }
                 $result .= PHP_EOL;
@@ -167,7 +164,7 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             /** @noinspection ForgottenDebugOutputInspection */
-            error_log( ' | ' . PhpAnsiColor::set($text, 'yellow'));
+            error_log(' | ' . PhpAnsiColor::set($text, 'yellow'));
         }
     }
 
@@ -178,13 +175,13 @@ final class Output
     public static function DisplayHelp()
     {
         /** @noinspection ForgottenDebugOutputInspection */
-        error_log( PhpAnsiColor::set(INFO1, 'white'));
+        error_log(PhpAnsiColor::set(INFO1, 'white'));
         /** @noinspection ForgottenDebugOutputInspection */
-        error_log( PhpAnsiColor::set(INFO2, 'yellow'));
+        error_log(PhpAnsiColor::set(INFO2, 'yellow'));
         /** @noinspection ForgottenDebugOutputInspection */
-        error_log( PhpAnsiColor::set(INFO3, 'white'));
+        error_log(PhpAnsiColor::set(INFO3, 'white'));
         /** @noinspection ForgottenDebugOutputInspection */
-        error_log( PhpAnsiColor::set(INFO4, 'white'));
+        error_log(PhpAnsiColor::set(INFO4, 'white'));
     }
 
     /**
@@ -199,8 +196,7 @@ final class Output
             echo self::ArrayToText($array);
             /** @noinspection ForgottenDebugOutputInspection */
             error_log(PHP_EOL . PhpAnsiColor::set('-------- Results End --------', 'green+bold') . PHP_EOL);
-        }
-        else {
+        } else {
             self::DisplayHTMLHeader();
             echo self::ArrayToHTML($array);
             self::DisplayHTMLFooter();
