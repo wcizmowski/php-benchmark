@@ -6,9 +6,6 @@
  * Time: 15:07
  */
 
-define('OPTION_DB','db');
-define('OPTION_HELP','help');
-
 define('COUNT_MATH', 100000);
 define('COUNT_ARRAYS', 1000000);
 define('COUNT_DB', 1000000);

@@ -16,6 +16,9 @@ if (!file_exists('config.inc.php')) {
     exit;
 }
 
+define('OPTION_DB','db');
+define('OPTION_HELP','help');
+
 require_once 'config.inc.php';
 require_once __DIR__ . '/Tests/Test.php';
 require_once 'Output.php';
