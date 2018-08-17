@@ -6,6 +6,7 @@ require_once __DIR__ . '/../config.inc.php';
 require_once 'PhpAnsiColor.php';
 require_once __DIR__ . '/../Tests/TestBase.php';
 
+use Phalcon\Config\Adapter\Php;
 use PhpAnsiColor\PhpAnsiColor;
 use TestBase\TestBase;
 
@@ -98,8 +99,9 @@ final class Output
     public static function DisplayProgress($text)
     {
         if (self::isCommandLineMode()) {
-            /** @noinspection ForgottenDebugOutputInspection */
-            error_log('Test ' . PhpAnsiColor::set($text, 'yellow') . ' ...');
+            echo 'Test ';
+            PhpAnsiColor::log($text,'yellow');
+            echo ' ...' . PHP_EOL;
         }
     }
 
@@ -110,8 +112,9 @@ final class Output
     public static function DisplayProgressInside($text)
     {
         if (self::isCommandLineMode()) {
-            /** @noinspection ForgottenDebugOutputInspection */
-            error_log(' | ' . PhpAnsiColor::set($text, 'yellow'));
+            echo ' | ';
+            PhpAnsiColor::log($text,'yellow');
+            echo PHP_EOL;
         }
     }
 
@@ -122,7 +125,8 @@ final class Output
     public static function DisplayHelp()
     {
         $content = file_get_contents(__DIR__ . '/help.txt');
-        echo $content;
+        $text = PhpAnsiColor::replace($content,'\[.*?\]','yellow');
+        echo $text;
     }
 
     /**
@@ -133,13 +137,13 @@ final class Output
     {
         if (self::isCommandLineMode()) {
 
-            /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PhpAnsiColor::set('-------- Results begin --------', 'green+bold'));
+            PhpAnsiColor::log('-------- Results begin --------', 'green+bold');
 
             echo self::ArrayToText($array);
 
-            /** @noinspection ForgottenDebugOutputInspection */
-            error_log(PHP_EOL . PhpAnsiColor::set('-------- Results End --------', 'green+bold') . PHP_EOL);
+            PhpAnsiColor::log('-------- Results End --------', 'green+bold');
+            echo PHP_EOL;
+            echo PHP_EOL;
 
         } else {
             echo self::DisplayHTML(self::ArrayToHTML($array));

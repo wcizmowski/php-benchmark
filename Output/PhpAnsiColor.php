@@ -65,8 +65,7 @@ class PhpAnsiColor
 
     public static function log($message, $color)
     {
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(self::set($message, $color));
+        echo self::set($message, $color);
     }
 
 

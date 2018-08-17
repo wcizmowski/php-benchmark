@@ -1,5 +1,5 @@
 /**
-* PHP Script benchmark (PHP and MySQL-Server)
+* [PHP Script benchmark (PHP and MySQL-Server)]
 *
 * inspired by / thanks to:
 * - www.php-benchmark-script.com  (Alessandro Torrisi)
