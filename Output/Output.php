@@ -6,7 +6,6 @@ require_once __DIR__ . '/../config.inc.php';
 require_once 'PhpAnsiColor.php';
 require_once __DIR__ . '/../Tests/TestBase.php';
 
-use Phalcon\Config\Adapter\Php;
 use PhpAnsiColor\PhpAnsiColor;
 use TestBase\TestBase;
 
@@ -89,7 +88,7 @@ final class Output
     private static function DisplayHTML($text)
     {
         $content = file_get_contents(__DIR__ . '/output.html');
-        return str_replace('[content]',$text,$content);
+        return str_replace('[content]', $text, $content);
     }
 
     /**
@@ -100,7 +99,7 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             echo 'Test ';
-            PhpAnsiColor::log($text,'yellow');
+            PhpAnsiColor::log($text, 'yellow');
             echo ' ...' . PHP_EOL;
         }
     }
@@ -113,7 +112,7 @@ final class Output
     {
         if (self::isCommandLineMode()) {
             echo ' | ';
-            PhpAnsiColor::log($text,'yellow');
+            PhpAnsiColor::log($text, 'yellow');
             echo PHP_EOL;
         }
     }
@@ -125,8 +124,7 @@ final class Output
     public static function DisplayHelp()
     {
         $content = file_get_contents(__DIR__ . '/help.txt');
-        $text = PhpAnsiColor::replace($content,'\[.*?\]','yellow');
-        echo $text;
+        echo PhpAnsiColor::replace($content, '\(.*?\)', 'yellow');
     }
 
     /**
