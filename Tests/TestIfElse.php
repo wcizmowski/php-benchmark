@@ -9,7 +9,7 @@
 namespace TestIfElse;
 
 require_once 'TestBase.php';
-require_once __DIR__ . '/../Output.php';
+require_once __DIR__ . '/../Output/Output.php';
 
 use TestBase\TestBase;
 use Output\Output;

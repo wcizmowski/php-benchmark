@@ -10,7 +10,7 @@ namespace TestDB;
 
 require_once __DIR__ . '/../config.inc.php';
 require_once 'TestBase.php';
-require_once __DIR__ . '/../Output.php';
+require_once __DIR__ . '/../Output/Output.php';
 
 use TestBase\TestBase;
 use Output\Output;

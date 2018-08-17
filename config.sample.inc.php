@@ -20,27 +20,3 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'test');
 define('DB_USER', 'test');
 define('DB_PASSWORD', 'mIf#pxWsR1r08lck');
-
-define('INFO1',' /**');
-
-define('INFO2',' * PHP Script benchmark (PHP and MySQL-Server)');
-
-define('INFO3', ' *
- * inspired by / thanks to:
- * - www.php-benchmark-script.com  (Alessandro Torrisi)
- * - www.webdesign-informatik.de
- *
- * @author Witold Ciżmowski, Speednet
- * @license MIT
- */
-    ');
-
-define('INFO4', ' /*
- * usage:
- * (first copy config.sample.inc.php into config.inc.php)
- * php php-benchmark.php [option]
- * 
- * --db   with Database test
- * --help this help
- */
-    ');

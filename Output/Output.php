@@ -2,9 +2,9 @@
 
 namespace Output;
 
-require_once 'config.inc.php';
+require_once __DIR__ . '/../config.inc.php';
 require_once 'PhpAnsiColor.php';
-require_once __DIR__ . '/Tests/TestBase.php';
+require_once __DIR__ . '/../Tests/TestBase.php';
 
 use PhpAnsiColor\PhpAnsiColor;
 use TestBase\TestBase;
@@ -121,14 +121,8 @@ final class Output
      */
     public static function DisplayHelp()
     {
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(PhpAnsiColor::set(INFO1, 'white'));
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(PhpAnsiColor::set(INFO2, 'yellow'));
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(PhpAnsiColor::set(INFO3, 'white'));
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log(PhpAnsiColor::set(INFO4, 'white'));
+        $content = file_get_contents(__DIR__ . '/help.txt');
+        echo $content;
     }
 
     /**
@@ -138,11 +132,15 @@ final class Output
     public static function DisplayResults($array)
     {
         if (self::isCommandLineMode()) {
+
             /** @noinspection ForgottenDebugOutputInspection */
             error_log(PhpAnsiColor::set('-------- Results begin --------', 'green+bold'));
+
             echo self::ArrayToText($array);
+
             /** @noinspection ForgottenDebugOutputInspection */
             error_log(PHP_EOL . PhpAnsiColor::set('-------- Results End --------', 'green+bold') . PHP_EOL);
+
         } else {
             echo self::DisplayHTML(self::ArrayToHTML($array));
         }

@@ -10,7 +10,7 @@ require_once 'TestIfElse.php';
 require_once 'TestString.php';
 require_once 'TestArrays.php';
 require_once 'TestDB.php';
-require_once __DIR__ . '/../Output.php';
+require_once __DIR__ . '/../Output/Output.php';
 
 use TestBase\TestBase;
 use TestMath\TestMath;
@@ -72,7 +72,7 @@ class Test extends TestBase
     /**
      *  Run all test
      */
-    public function RunTest()
+    public function Test()
     {
         $this->timeStart = microtime(true);
 
