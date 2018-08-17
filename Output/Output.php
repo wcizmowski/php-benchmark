@@ -87,7 +87,7 @@ final class Output
      */
     private static function DisplayHTML($text)
     {
-        $content = file_get_contents('output.html');
+        $content = file_get_contents(__DIR__ . '/output.html');
         return str_replace('[content]',$text,$content);
     }
 
