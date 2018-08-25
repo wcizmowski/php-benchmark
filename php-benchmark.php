@@ -16,7 +16,7 @@ if (!file_exists('config.inc.php')) {
     exit;
 }
 
-require_once __DIR__ . '/Tests/Test.php';
+require_once __DIR__ . '/Benchmark/Test.php';
 require_once __DIR__ . '/Output/Output.php';
 
 use Tests\Test;

@@ -4,7 +4,7 @@ namespace Output;
 
 require_once __DIR__ . '/../config.inc.php';
 require_once 'PhpAnsiColor.php';
-require_once __DIR__ . '/../Tests/TestBase.php';
+require_once __DIR__ . '/../Benchmark/TestBase.php';
 
 use PhpAnsiColor\PhpAnsiColor;
 use TestBase\TestBase;
