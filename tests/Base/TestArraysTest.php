@@ -11,8 +11,6 @@ require_once __DIR__ . '/../../Benchmark/TestArrays.php';
 class TestArraysTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @param $result
-     * @param int $count
      */
     public function testTest()
     {
