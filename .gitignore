@@ -5,3 +5,4 @@
 *.rpm
 config.inc.php
 test.php
+vendor
