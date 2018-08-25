@@ -12,7 +12,7 @@ class TestArraysTest extends \PHPUnit_Framework_TestCase
 {
     /**
      */
-    public function testTest()
+    public function testReturnObject()
     {
         $testMath = new \TestsArrays\TestArrays();
 
