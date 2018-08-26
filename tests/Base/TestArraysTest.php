@@ -2,6 +2,8 @@
 
 namespace Base;
 
+use TestsArrays\TestArrays;
+
 require_once __DIR__ . '/../../Benchmark/TestArrays.php';
 
 /**
@@ -15,19 +17,20 @@ class TestArraysTest extends \PHPUnit_Framework_TestCase
      */
     public function testReturnObject()
     {
-        $testMath = new \TestsArrays\TestArrays();
+        $testMath = new TestArrays();
 
         $this->assertInternalType('object', $testMath);
     }
 
     public function testNotEmptyResult()
     {
-        $testMath = new \TestsArrays\TestArrays();
+        $testMath = new TestArrays();
 
         ob_start();
         $testMath->Test($result,1);
         ob_end_clean();
 
         $this->assertNotEquals($result, '');
+        $this->assertArrayHasKey(TestArrays::TEST_NAME,$result[TestArrays::PARTS_BENCHMARK]);
     }
 }
