@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../Benchmark/TestMath.php';
 class TestMathTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     *  TestArrays object creating
+     *  TestMath object creating
      */
     public function testReturnObject()
     {

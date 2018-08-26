@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../Benchmark/TestIfElse.php';
 class TestIfElseTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     *  TestArrays object creating
+     *  TestIfElse object creating
      */
     public function testReturnObject()
     {

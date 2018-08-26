@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../Benchmark/TestString.php';
 class TestStringTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     *  TestArrays object creating
+     *  TestString object creating
      */
     public function testReturnObject()
     {

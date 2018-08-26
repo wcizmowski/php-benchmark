@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../Benchmark/TestLoops.php';
 class TestLoopsTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     *  TestArrays object creating
+     *  TestLoops object creating
      */
     public function testReturnObject()
     {
