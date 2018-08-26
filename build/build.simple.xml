@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="php-benchmark" default="build" basedir=".">
+
+    <target name="build">
+        <phingcall target="testAll"/>
+    </target>
+
+    <target name="testAll">
+        <exec passthru="true"
+              checkreturn="false"
+              command="${project.basedir}/vendor/bin/phpunit"/>
+    </target>
+
+</project>
