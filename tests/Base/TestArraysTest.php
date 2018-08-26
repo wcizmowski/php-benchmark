@@ -25,7 +25,7 @@ class TestArraysTest extends \PHPUnit_Framework_TestCase
         $testMath = new \TestsArrays\TestArrays();
 
         ob_start();
-        $testMath->Test($result);
+        $testMath->Test($result,1);
         ob_end_clean();
 
         $this->assertNotEquals($result, '');
