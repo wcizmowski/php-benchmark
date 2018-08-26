@@ -20,7 +20,7 @@ class TestBaseTest extends \PHPUnit_Framework_TestCase
      */
     public function testConfigFileExists()
     {
-        $this->assertFileExists(__DIR__ . '/../../config.inc.php');
+        $this->assertFileExists(__DIR__ . '/../../config1.inc.php');
     }
 
     /**
