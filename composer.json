@@ -1,0 +1,14 @@
+{
+  "name": "devskiller/text-encoder",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.3.3",
+    "phpunit/phpunit": "4.8.*",
+    "phpspec/prophecy": "^1.5",
+    "phing/phing": "2.*"
+  },
+  "require-dev": {
+    "mockery/mockery": "1.*"
+  }
+}

@@ -15,4 +15,6 @@ PHP Script benchmark (PHP and MySQL-Server)
  * --db   with Database test
  * --help this help
 
-
+ tests:
+ 
+ ```vendor/phing/phing/bin/phing -f build/build.xml```

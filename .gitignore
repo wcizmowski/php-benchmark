@@ -5,3 +5,5 @@
 *.rpm
 config.inc.php
 test.php
+vendor
+build/logs
