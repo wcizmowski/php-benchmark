@@ -31,6 +31,7 @@ class TestArraysTest extends \PHPUnit_Framework_TestCase
         ob_end_clean();
 
         $this->assertNotEquals($result, '');
+        $this->assertArrayHasKey(TestArrays::PARTS_BENCHMARK,$result);
         $this->assertArrayHasKey(TestArrays::TEST_NAME,$result[TestArrays::PARTS_BENCHMARK]);
     }
 }
