@@ -10,7 +10,6 @@ namespace Base;
 
 use TestBase\TestBase;
 
-require_once __DIR__ . '/../../config.inc.php';
 require_once __DIR__ . '/../../Output/Output.php';
 require_once __DIR__ . '/../../Benchmark/TestBase.php';
 
@@ -22,5 +21,18 @@ class TestBaseTest extends \PHPUnit_Framework_TestCase
     public function testConfigFileExists()
     {
         $this->assertFileExists(__DIR__ . '/../../config.inc.php');
+    }
+
+    /**
+     * @depends testConfigFileExists
+     */
+    public function testCountValues()
+    {
+        $this->assertLessThan(100001,COUNT_MATH);
+        $this->assertLessThan(100001,COUNT_ARRAYS);
+        $this->assertLessThan(1000001,COUNT_DB);
+        $this->assertLessThan(10000001,COUNT_IFELSE);
+        $this->assertLessThan(10000001,COUNT_LOOPS);
+        $this->assertLessThan(100001,COUNT_STRING);
     }
 }
