@@ -23,7 +23,10 @@ class TestArraysTest extends \PHPUnit_Framework_TestCase
     public function testNotEmptyResult()
     {
         $testMath = new \TestsArrays\TestArrays();
+
+        ob_start();
         $testMath->Test($result);
+        ob_end_clean();
 
         $this->assertNotEquals($result, '');
     }
