@@ -15,4 +15,10 @@ PHP Script benchmark (PHP and MySQL-Server)
  * --db   with Database test
  * --help this help
 
+ tests (with composer update first):
+ 
+ ```vendor/phing/phing/bin/phing -f build/build.xml```
 
+ test simple (test only without composer update):
+ 
+ ```vendor/phing/phing/bin/phing -f build/build.simple.xml```
