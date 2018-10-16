@@ -6,7 +6,7 @@ PHP Script benchmark (PHP and MySQL-Server)
  - www.php-benchmark-script.com  (Alessandro Torrisi)
  - www.webdesign-informatik.de
 
- - @author Witold Ciżmowski, Speednet
+ - @author Witold Ciżmowski
  - @license MIT
 
  usage:
