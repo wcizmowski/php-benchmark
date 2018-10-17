@@ -15,6 +15,7 @@ PHP Script benchmark (PHP and MySQL-Server)
  run:
  ##### php php-benchmark.php [option]
  
+ options:
  * --db   with Database test
  * --help this help
 
