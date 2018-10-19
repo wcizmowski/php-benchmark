@@ -7,6 +7,7 @@ PHP Script benchmark (PHP and MySQL-Server)
  - www.webdesign-informatik.de
 
  - @author Witold Ciżmowski
+ - @https://www.linkedin.com/in/backenddev/
  - @license MIT
 
  usage:
