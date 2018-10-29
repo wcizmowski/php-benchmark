@@ -22,7 +22,7 @@ require_once __DIR__ . '/Output/Output.php';
 use Tests\Test;
 use Output\Output;
 
-$opt = getopt('', [OPTION_DB, OPTION_HELP]);
+$opt = getopt('', array(OPTION_DB, OPTION_HELP));
 
 if (isset($opt[OPTION_HELP]) && Output::isCommandLineMode()) {
     Output::DisplayHelp();
